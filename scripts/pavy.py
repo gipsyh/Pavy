@@ -605,7 +605,8 @@ def run(workdir, fname, profs, opt):
     return exit_code
 
 def main(argv):
-    os.setpgrp()
+    if os.getpgrp() != os.getpid():
+        os.setpgrp()
 
     (opt, args) = parseOpt(argv[1:])
 
